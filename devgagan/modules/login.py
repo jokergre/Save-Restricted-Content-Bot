@@ -81,10 +81,8 @@ async def generate_session(_, message):
         
     user_id = message.chat.id   
     
-  await client.send_message(user_id, "Please enter your phone number along with the country code.\nExample: +19876543210")
+number = await _.ask(user_id, 'Please enter your phone number along with the country code. \nExample: +19876543210', filters=filters.text)
 
-response = await client.wait_for_message(chat_id=user_id, filters=filters.text)
-number = response.text
 
     try:
         await message.reply("📲 Sending OTP...")
